@@ -16,6 +16,10 @@ end
 
 require 'bcdiceCore'
 
+# def debug(*msg)
+#     `console.log('debug>', #{msg})`
+# end
+
 bcdiceMaker = BCDiceMaker.new
 
 wrapper = Native::Object.new
