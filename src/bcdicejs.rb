@@ -8,6 +8,12 @@ class FileTest
     end
 end
 
+class Object
+    def freeze
+        self
+    end
+end
+
 require 'bcdiceCore'
 
 bcdiceMaker = BCDiceMaker.new
