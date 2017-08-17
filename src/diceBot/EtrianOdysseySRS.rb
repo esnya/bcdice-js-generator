@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-require 'diceBot/SRS'
+require './diceBot/SRS'
 
 class EtrianOdysseySRS < SRS
   setPrefixes(['2D6.*','EO.*','SQ.*'])

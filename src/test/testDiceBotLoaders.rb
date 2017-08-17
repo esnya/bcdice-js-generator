@@ -7,7 +7,7 @@ end
 
 require 'test/unit'
 require 'bcdiceCore'
-require 'diceBot/DiceBotLoader'
+require './diceBot/DiceBotLoader'
 
 class TestDiceBotLoaders < Test::Unit::TestCase
   def setup

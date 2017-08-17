@@ -5,14 +5,14 @@ require 'rubygems'
 require 'wx'
 require 'wx/classes/timer.rb'
 
-require 'bcdiceCore.rb'
-require 'ArgsAnalizer.rb'
-require 'IniFile.rb'
-require 'diceBot/DiceBotLoader'
+require './bcdiceCore.rb'
+require './ArgsAnalizer.rb'
+require './IniFile.rb'
+require './diceBot/DiceBotLoader'
 
 $LOAD_PATH << File.dirname(__FILE__) + "/irc"
-require 'ircLib.rb'
-require 'ircBot.rb'
+require './ircLib.rb'
+require './ircBot.rb'
 
 $isDebug = false
 

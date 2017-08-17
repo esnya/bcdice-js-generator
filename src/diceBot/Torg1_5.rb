@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-require 'diceBot/Torg'
+require './diceBot/Torg'
 
 class Torg1_5 < Torg
   setPrefixes(Torg.prefixes)

@@ -6,7 +6,7 @@ unless $LOAD_PATH.include?(dodontof_root)
 end
 
 require 'test/unit'
-require 'diceBot/DiceBot'
+require './diceBot/DiceBot'
 
 class TestDiceBotPrefixesCompatibility < Test::Unit::TestCase
   def test_prefixesCompatibility

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-require 'diceBot/MetallicGuadian'
+require './diceBot/MetallicGuadian'
 
 class FullMetalPanic < MetallicGuadian
   setPrefixes(['2D6.*','MG.*','FP.*'])

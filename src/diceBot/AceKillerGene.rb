@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-require 'diceBot/GardenOrder'
+require './diceBot/GardenOrder'
 
 class AceKillerGene < GardenOrder
   setPrefixes([

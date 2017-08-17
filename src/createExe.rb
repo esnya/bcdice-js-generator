@@ -6,7 +6,7 @@ require 'fileutils'
 bcdiceRoot = File.expand_path(File.dirname(__FILE__))
 $LOAD_PATH.unshift(bcdiceRoot) unless $LOAD_PATH.include?(bcdiceRoot)
 
-require 'diceBot/DiceBotLoader'
+require './diceBot/DiceBotLoader'
 
 def updateConfig
   nameList = DiceBotLoader.collectDiceBots.

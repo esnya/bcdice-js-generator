@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-require 'diceBot/DemonParasite'
+require './diceBot/DemonParasite'
 
 class ParasiteBlood < DemonParasite
   setPrefixes(['(N|A|M|U|C|)?URGE\d+'])

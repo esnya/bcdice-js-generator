@@ -3,9 +3,9 @@
 $LOAD_PATH << File.dirname(__FILE__) + "/.."
 
 require 'test/unit'
-require 'log'
-require 'bcdiceCore.rb'
-require 'ArgsAnalizer.rb'
+require './log'
+require './bcdiceCore.rb'
+require './ArgsAnalizer.rb'
 
 class TestArgs < Test::Unit::TestCase
   

@@ -3,8 +3,8 @@
 $LOAD_PATH << File.dirname(__FILE__) + "/.."
 
 require 'test/unit'
-require 'log'
-require 'IniFile.rb'
+require './log'
+require './IniFile.rb'
 
 class TestIniFile < Test::Unit::TestCase
   
