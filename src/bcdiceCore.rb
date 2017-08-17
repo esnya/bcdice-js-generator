@@ -53,8 +53,6 @@ $point_counter = {}
 require 'CardTrader'
 require 'TableFileData'
 require 'diceBot/DiceBot'
-#require 'diceBot/DiceBotLoader'
-#require 'diceBot/DiceBotLoaderList'
 require 'dice/AddDice'
 require 'dice/UpperDice'
 require 'dice/RerollDice'
@@ -1057,7 +1055,7 @@ class BCDice
   end
   
   def randNomal(max)
-    Random.rand(max)
+    Kernel.rand(max)
   end
   
   def randFromRands(targetMax)

@@ -4,7 +4,7 @@ $LOAD_PATH << File.dirname(__FILE__) + "/.."
 require 'test/unit'
 require 'CardTrader'
 require 'Kconv'
-require './log'
+require 'log'
 require 'BCDice_forTest'
 
 $isDebug = false

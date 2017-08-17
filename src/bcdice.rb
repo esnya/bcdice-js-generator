@@ -3,7 +3,7 @@
 
 $LOAD_PATH << File.dirname(__FILE__) # require_relative対策
 
-require 'configBcDice'
+require 'configBcDice.rb'
 
 class Cli
   def quit
@@ -50,10 +50,10 @@ end
 if $0 === __FILE__
   
   if( ARGV.length < 1 or ARGV[0] == "createExe" )
-    require './bcdiceGui.rb'
+    require 'bcdiceGui.rb'
     mainBcDiceGui
   else
-    require './bcdiceCore.rb'
+    require 'bcdiceCore.rb'
     mainBcDiceCli(ARGV)
   end
   

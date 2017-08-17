@@ -5,7 +5,7 @@ unless $LOAD_PATH.include?(bcDiceRoot)
   $LOAD_PATH.unshift(bcDiceRoot)
 end
 
-require './bcdiceCore.rb'
+require 'bcdiceCore.rb'
 
 class CgiDiceBot
   

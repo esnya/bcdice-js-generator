@@ -8,12 +8,6 @@ class FileTest
     end
 end
 
-class Random
-    def rand(max)
-        `Math.random() * (max || 0)`
-    end
-end
-
 require 'bcdiceCore'
 
 bcdiceMaker = BCDiceMaker.new
