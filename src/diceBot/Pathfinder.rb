@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-require './diceBot/DungeonsAndDoragons'
+require 'diceBot/DungeonsAndDoragons'
 
 class Pathfinder < DungeonsAndDoragons
   

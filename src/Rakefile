@@ -2,7 +2,63 @@
 
 require "rake/testtask"
 
-task :default => :test
+task :default => :build
+
+GEN_DIR = 'generated'
+directory GEN_DIR
+
+DIST_DIR = '../dist'
+directory DIST_DIR
+
+desc 'Generate DiceBot loader'
+task :genLoader => GEN_DIR do
+  $:.unshift File.dirname(__FILE__)
+
+  require 'diceBot/DiceBotLoader'
+  require 'diceBot/DiceBotLoaderList'
+
+  class DiceBotLoader
+    def self.getFilenames()
+      diceBotDir = File.expand_path('diceBot', File.dirname(__FILE__))
+      botFiles = Dir.glob("#{diceBotDir}/*.rb")
+      botNames =
+        botFiles.map { |botFile| File.basename(botFile, '.rb').untaint }
+      validBotNames =
+        # 特別な名前のものを除外する
+        (botNames - BOT_NAMES_TO_IGNORE).
+        # 正しいクラス名になるものだけ選ぶ
+        select { |botName| /\A[A-Z]/ === botName }
+    end
+  end
+
+  class DiceBotLoaderList
+    def self.generateStaticDiceBotLoaderList()
+      File.open(GEN_DIR + '/StaticDiceBotLoaderList.rb', 'w') do |file|
+        #@loaders.each do |loader|
+          DiceBotLoader.getFilenames.each do |filename|
+            file.puts("require 'diceBot/" + filename + "'")
+          end
+        #end
+      end
+    end
+  end
+
+  DiceBotLoaderList.generateStaticDiceBotLoaderList()
+end
+
+task :generate => [:genLoader] do
+end
+
+desc 'Build JavaScript code'
+task :build => [:generate, DIST_DIR] do
+  require 'opal'
+
+  builder = Opal::Builder.new
+  builder.append_paths('.', './stub')
+  File.open('../dist/bcdice.js', 'w') do |file|
+    file.write(builder.build('./bcdicejs.rb').to_s)
+  end
+end
 
 namespace :test do
   desc 'ダイスボットのテストを行う'

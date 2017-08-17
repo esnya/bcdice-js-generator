@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-require './diceBot/SwordWorld'
+require 'diceBot/SwordWorld'
 
 class SwordWorld2_0 < SwordWorld
   setPrefixes(['K\d+.*', 'Gr(\d+)?', 'FT', 'TT'])

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-require './diceBot/DiceBotLoader'
+require 'diceBot/DiceBotLoader'
 
 # setGameByTitleで使用する読み込み処理のリスト
 class DiceBotLoaderList

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 require 'bcdiceCore'
-require './diceBot/DiceBotLoader'
+require 'diceBot/DiceBotLoader'
 require 'cgiDiceBot'
 require 'DiceBotTestData'
 

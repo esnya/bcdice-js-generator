@@ -3,7 +3,7 @@
 
 $LOAD_PATH << File.dirname(__FILE__) # require_relative対策
 
-require './configBcDice.rb'
+require 'configBcDice'
 
 class Cli
   def quit

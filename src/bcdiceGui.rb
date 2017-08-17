@@ -8,7 +8,7 @@ require 'wx/classes/timer.rb'
 require './bcdiceCore.rb'
 require './ArgsAnalizer.rb'
 require './IniFile.rb'
-require './diceBot/DiceBotLoader'
+require 'diceBot/DiceBotLoader'
 
 $LOAD_PATH << File.dirname(__FILE__) + "/irc"
 require './ircLib.rb'

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-require './diceBot/Gundog'
+require 'diceBot/Gundog'
 
 class GundogZero < Gundog
   setPrefixes(['(.DPT|.FT)\d*'])

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-require './diceBot/EarthDawn'
+require 'diceBot/EarthDawn'
 
 class EarthDawn3 < EarthDawn
   setPrefixes(['\d+e.*'])

@@ -1,7 +1,7 @@
 #!ruby -Ku
 # -*- coding: utf-8 -*-
 
-require './configBcDice.rb'
+require 'configBcDice'
 require './ArgsAnalizer.rb'
 
 class IrcClient < Net::IRC::Client
@@ -185,12 +185,12 @@ class IrcClient < Net::IRC::Client
   end
   
   #正常な「切断」処理時にもエラーが検出される。対処法が不明のため現状コメントアウト
-=begin
-  def on_error(*args)
-    debug_out("on_error begin, args", args.inspect)
-    sendMessage( args.inspect )
-  end
-=end
+# =begin
+#   def on_error(*args)
+#     debug_out("on_error begin, args", args.inspect)
+#     sendMessage( args.inspect )
+#   end
+# =end
   
   def on_err_nicknameinuse(event)
     debug_out("on_err_nicknameinuse being !")

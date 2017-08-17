@@ -2,7 +2,7 @@
 
 class DiceBot
   # 空の接頭辞（反応するコマンド）
-  EMPTY_PREFIXES_PATTERN = (/(^|\s)(S)?()(\s|$)/i).freeze
+  EMPTY_PREFIXES_PATTERN = (/(^|\s)(S)?()(\s|$)/i)
 
   # 接頭辞（反応するコマンド）の配列を返す
   # @return [Array<String>]
@@ -20,12 +20,8 @@ class DiceBot
   # @param [Array<String>] prefixes 接頭辞のパターンの配列
   # @return [self]
   def self.setPrefixes(prefixes)
-    @prefixes = prefixes.
-      # 最適化が効くように内容の文字列を変更不可にする
-      map(&:freeze).
-      # 配列全体を変更不可にする
-      freeze
-    @prefixesPattern = (/(^|\s)(S)?(#{prefixes.join('|')})(\s|$)/i).freeze
+    @prefixes = prefixes
+    @prefixesPattern = (/(^|\s)(S)?(#{prefixes.join('|')})(\s|$)/i)
 
     self
   end
@@ -33,7 +29,7 @@ class DiceBot
   # 接頭辞（反応するコマンド）をクリアする
   # @return [self]
   def self.clearPrefixes
-    @prefixes = [].freeze
+    @prefixes = []
     @prefixesPattern = EMPTY_PREFIXES_PATTERN
 
     self

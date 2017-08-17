@@ -1,9 +1,9 @@
 #!/bin/ruby -Ku 
 # -*- coding: utf-8 -*-
 
-require './log'
-require './configBcDice.rb'
-require './CountHolder.rb'
+require 'log'
+require 'configBcDice'
+require 'CountHolder'
 require 'kconv'
 
 #============================== 起動法 ==============================
@@ -50,15 +50,16 @@ $plotPrintChannels = {}
 $point_counter = {}
 
 
-require './CardTrader'
-require './TableFileData'
-require './diceBot/DiceBot'
-require './diceBot/DiceBotLoader'
-require './diceBot/DiceBotLoaderList'
-require './dice/AddDice'
-require './dice/UpperDice'
-require './dice/RerollDice'
+require 'CardTrader'
+require 'TableFileData'
+require 'diceBot/DiceBot'
+#require 'diceBot/DiceBotLoader'
+#require 'diceBot/DiceBotLoaderList'
+require 'dice/AddDice'
+require 'dice/UpperDice'
+require 'dice/RerollDice'
 
+require 'generated/StaticDiceBotLoaderList'
 
 class BCDiceMaker
   
@@ -1056,7 +1057,7 @@ class BCDice
   end
   
   def randNomal(max)
-    Kernel.rand(max)
+    Random.rand(max)
   end
   
   def randFromRands(targetMax)

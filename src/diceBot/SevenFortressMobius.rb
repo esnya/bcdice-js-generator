@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-require './diceBot/NightWizard'
+require 'diceBot/NightWizard'
 
 class SevenFortressMobius < DiceBot
   setPrefixes(['\d*SFM'])

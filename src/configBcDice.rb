@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 require 'kconv'
-require './configBcDiceForSystem.rb'
+require 'configBcDiceForSystem'
 
 $isDebug = false
 

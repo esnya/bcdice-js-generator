@@ -1,7 +1,7 @@
 #!/perl/bin/ruby -Ku 
 # -*- coding: utf-8 -*-
 
-require './configBcDice.rb'
+require 'configBcDice'
 
 $ircNickRegExp = '[A-Za-z\d\-\[\]\\\'^{}_]+';
 
