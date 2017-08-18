@@ -1,5 +1,5 @@
 try {
-    const BCDice = require('../dist/bcdice');
+    const BCDice = require('../../dist/bcdice');
 
     const bcdice = BCDice.newBcDice('SwordWorld2_0');
 

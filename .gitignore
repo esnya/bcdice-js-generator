@@ -7,3 +7,4 @@
 /src/tmp.txt
 /src/test/*.html~
 /extratables/*.txt~
+node_modules
