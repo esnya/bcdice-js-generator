@@ -8,6 +8,9 @@ try {
 
     bcdice.setMessage('K20');
     console.log(bcdice.dice_command());
+
+    bcdice.setMessage('2d>=7');
+    console.log(bcdice.dice_command());
 } catch(e) {
     console.trace(e);
 }

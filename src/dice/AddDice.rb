@@ -18,7 +18,7 @@ class AddDice
       return "1"
     end
     
-    string = $2
+    string = $3
     judgeText = $4 # '>=10'といった成否判定文字
     judgeOperator = $5 # '>=' といった判定の条件演算子 文字
     diffText = $6
@@ -29,7 +29,6 @@ class AddDice
     if( judgeText )
       isCheckSuccess = true
       signOfInequality = @bcdice.marshalSignOfInequality(judgeOperator)
-      string = $3
     end
     
     dice_cnt = 0
