@@ -872,6 +872,7 @@ class BCDice
     
     dice, title, table, secret = @tableFileData.getTableData(arg, @diceBot.gameType)
     debug("dice", dice)
+    debug(title, table)
     
     if( table.nil? )
       debug("table is null")

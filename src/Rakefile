@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+$:.unshift File.dirname(__FILE__)
 
 require "rake/testtask"
 
@@ -11,9 +12,7 @@ DIST_DIR = '../dist'
 directory DIST_DIR
 
 desc 'Generate DiceBot loader'
-task :genLoader => GEN_DIR do
-  $:.unshift File.dirname(__FILE__)
-
+task :genDiceBotLoader => GEN_DIR do
   require 'diceBot/DiceBotLoader'
   require 'diceBot/DiceBotLoaderList'
 
@@ -46,7 +45,56 @@ task :genLoader => GEN_DIR do
   DiceBotLoaderList.generateStaticDiceBotLoaderList()
 end
 
-task :generate => [:genLoader] do
+desc 'Generate extratables'
+task :genExtratables => GEN_DIR do
+  require 'Base64'
+  require 'TableFileData'
+  tableFileData = TableFileData.new
+
+  tableData = []
+  fileData = []
+  Dir.glob('../extratables/*.txt').each do |filename|
+    info = tableFileData.readGameCommandInfo(filename.untaint, '')
+    gameType = info['gameType']
+    gameType ||= ''
+    command = info['command']
+  
+    infoDump = info.to_s
+    tableData.push("tableData['#{gameType}_#{command}'] = #{infoDump}")
+
+    fileDump = File.read(filename).toutf8.lines
+      .map{ |line| line.strip.gsub(/"/, '\"') }
+      .map{ |line| "\"#{line}\"" }
+      .join(", ")
+    fileData.push("fileData['#{filename.untaint}'] = [#{fileDump}].join(\"\\n\")")
+  end
+
+  File.open(GEN_DIR + '/StaticTableFileData.rb', 'w') do |file|
+    file.write("# -*- coding: utf-8 -*-\n\n")
+    file.write("class StaticTableFileData\n")
+
+    file.write("  def self.getTableData()\n")
+    file.write("    tableData = Hash.new\n")
+    tableData.each do |line|
+      file.write("    #{line}\n")
+    end
+    file.write("    tableData\n")
+    file.write("  end\n")
+
+    file.write("  def self.getFileData()\n")
+    file.write("    fileData = Hash.new\n")
+    fileData.each do |line|
+      file.write("    #{line}\n")
+    end
+    file.write("    fileData\n")
+    file.write("  end\n")
+
+    file.write("end\n")
+  end
+end
+
+desc 'Generate Ruby codes'
+task :generate => [:genDiceBotLoader, :genExtratables] do
 end
 
 desc 'Build JavaScript code'
