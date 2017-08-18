@@ -53,11 +53,11 @@ $point_counter = {}
 require 'CardTrader'
 require 'TableFileData'
 require 'diceBot/DiceBot'
+require 'diceBot/DiceBotLoader'
+require 'diceBot/DiceBotLoaderList'
 require 'dice/AddDice'
 require 'dice/UpperDice'
 require 'dice/RerollDice'
-
-require 'generated/StaticDiceBotLoaderList'
 
 class BCDiceMaker
   

@@ -14,6 +14,8 @@ class Object
     end
 end
 
+require 'diceBot/DiceBot'
+require 'generated/StaticDiceBotLoaderList'
 require 'bcdiceCore'
 
 # def debug(*msg)
