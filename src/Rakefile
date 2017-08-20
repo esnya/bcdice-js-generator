@@ -101,7 +101,7 @@ desc 'Build JavaScript code'
 task :build => [:generate, DIST_DIR] do
   require 'opal'
 
-  builder = Opal::Builder.new({ stubs: ['diceBot/DiceBotLoader', 'diceBot/DiceBotLoaderList'] })
+  builder = Opal::Builder.new
   builder.append_paths('.', './stub')
   File.open('../dist/bcdice.js', 'w') do |file|
     file.write(builder.build('./bcdicejs.rb').to_s)

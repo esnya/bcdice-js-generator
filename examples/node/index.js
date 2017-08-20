@@ -1,16 +1,21 @@
 try {
     const BCDice = require('../../dist/bcdice');
 
-    const bcdice = BCDice.newBcDice('KanColle');
+    const bcdice = new BCDice();
 
     bcdice.setMessage('2d');
-    console.log(bcdice.dice_command());
-
-    bcdice.setMessage('BT2');
-    console.log(bcdice.dice_command());
+    console.log('2d', bcdice.dice_command());
 
     bcdice.setMessage('2d>=7');
-    console.log(bcdice.dice_command());
+    console.log('2d>=7', bcdice.dice_command());
+
+    bcdice.setGameByTitle('KanColle');
+    bcdice.setMessage('BT2');
+    console.log('BT2', bcdice.dice_command());
+    
+    bcdice.setGameByTitle('SwordWorld2_0');
+    bcdice.setMessage('K20');
+    console.log('K20', bcdice.dice_command());
 } catch(e) {
     console.trace(e);
 }

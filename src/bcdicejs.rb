@@ -2,6 +2,7 @@ require 'opal'
 require 'opal/platform'
 require 'native'
 
+########## Ruby class patches ##########
 class Object
     def freeze
         self
@@ -14,17 +15,18 @@ class FileTest
     end
 end
 
-require 'diceBot/DiceBot'
-require 'generated/StaticDiceBotLoaderList'
-require 'generated/StaticTableFileData'
-require 'bcdiceCore'
-
 class String
     def toutf8
         self
     end
 end
 
+require 'diceBot/DiceBot'
+require 'generated/StaticDiceBotLoaderList'
+require 'generated/StaticTableFileData'
+require 'bcdiceCore'
+
+########## BCDice patches ##########
 class TableFileData
     def setDir(dir, prefix = '')
         @tableData
@@ -79,30 +81,47 @@ end
 #     `console.log('debug>', #{msg})`
 # end
 
-bcdiceMaker = BCDiceMaker.new
+########## Wrapper of BCDice ##########
 
-wrapper = Native::Object.new
-wrapper.JS[:newBcDice] = -> (diceBot) {
-    if (diceBot.nil?) then
-        bcdiceMaker.diceBot = DiceBot.new
-    else
-        bcdiceMaker.diceBot = Object.const_get(diceBot).new
-    end
+def newBcDice(this)
+    maker = BCDiceMaker.new
+    bcdice = maker.newBcDice
+    this.JS[:_bcdice] = bcdice
+end
 
-    original = bcdiceMaker.newBcDice
-
-    bcdice = Native::Object.new
-    bcdice.JS[:setMessage] = -> (message) {
-        original.setMessage(message)
-    }
-    bcdice.JS[:dice_command] = -> {
-        original.dice_command
-    }
-
-    bcdice
+proto = Native::Object.new
+proto.JS[:setDir] = -> (dir, prefix) {
+    `throw new Error('Unsupported')`
+    return nil
+}
+proto.JS[:isKeepSecretDice] = -> (b) {
+    `this`.JS[:_bcdice].isKeepSecretDice(b)
+}
+proto.JS[:getGameType] = -> () {
+    `this`.JS[:_bcdice].getGameType
+}
+proto.JS[:setDiceBot] = -> (diceBot) {
+    return if (diceBot.nil?)
+    `this`.JS[:_bcdice].setDiceBot(Object.const_get(diceBot).new)
+}
+proto.JS[:setIrcClient] = -> (client) {
+    `throw new Error('Unimplemented')`
+    `this`.JS[:_bcdice].setIrcClient(client)
+}
+proto.JS[:setMessage] = -> (message) {
+    `this`.JS[:_bcdice].setMessage(message);
+}
+proto.JS[:dice_command] = -> () {
+    `this`.JS[:_bcdice].dice_command
+}
+proto.JS[:setGameByTitle] = -> (gameTitle) {
+    `this`.JS[:_bcdice].setGameByTitle(gameTitle)
 }
 
 %x{
-    var wrapper = #{ wrapper };
-    module.exports = wrapper;
+    function BCDice() {
+        #{ newBcDice(`this`) };
+    }
+    BCDice.prototype = #{ proto }
+    module.exports = BCDice;
 }
